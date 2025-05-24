@@ -1,0 +1,168 @@
+/* Core Competencies Section Styles */
+.circle-card.competency-card {
+  width: 155px;
+  height: 155px;
+  min-height: unset;
+  min-width: unset;
+  border-radius: 50%;
+  border: 2px solid #e3e6f0;
+  box-shadow: 0 2px 12px rgba(13,110,253,0.06);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.25s, border-color 0.25s, box-shadow 0.25s;
+  overflow: visible;
+  z-index: 1;
+  margin: 0 auto;
+}
+.competency-icon {
+  color: #111;
+  font-size: 1.5rem;
+  margin-bottom: 0.2rem;
+  transition: color 0.25s;
+}
+.competency-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 0;
+  transition: color 0.25s;
+  text-align: center;
+  line-height: 1.2;
+}
+.competency-hover-overlay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  width: 100%; height: 100%;
+  background: rgba(78,54,158,0.92);
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s;
+  z-index: 2;
+}
+.competency-hover-overlay .fa-eye {
+  color: #fff;
+  font-size: 1.3rem;
+  margin-bottom: 0.2rem;
+}
+.competency-hover-overlay .view-skills-text {
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+.circle-card.competency-card:hover,
+.circle-card.competency-card:focus-within {
+  background: #f7f7ff;
+  border-color: #4e369e;
+  box-shadow: 0 8px 32px rgba(78,54,158,0.18);
+}
+.circle-card.competency-card:hover .competency-hover-overlay,
+.circle-card.competency-card:focus-within .competency-hover-overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+.circle-card.competency-card:hover .competency-icon,
+.circle-card.competency-card:focus-within .competency-icon {
+  color: #fff;
+}
+.circle-card.competency-card:hover .competency-label,
+.circle-card.competency-card:focus-within .competency-label {
+  color: #fff;
+}
+/* Modal Styles */
+.competency-modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0; top: 0; width: 100vw; height: 100vh;
+  background: rgba(30, 20, 60, 0.25);
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s;
+}
+.competency-modal.open {
+  display: flex;
+  animation: fadeInModalBg 0.3s;
+}
+@keyframes fadeInModalBg {
+  from { background: rgba(30,20,60,0); }
+  to { background: rgba(30,20,60,0.25); }
+}
+.competency-modal-content {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 12px 48px 0 rgba(78,54,158,0.25);
+  min-width: 270px;
+  max-width: 95vw;
+  min-height: 120px;
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  position: relative;
+  opacity: 0;
+  transform: translateY(40px) scale(0.97);
+  animation: modalOpenAnim 0.35s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+.competency-modal.open .competency-modal-content {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+@keyframes modalOpenAnim {
+  from { opacity: 0; transform: translateY(40px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.competency-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1.2rem;
+  font-size: 1.2rem;
+  color: #4e369e;
+  cursor: pointer;
+  z-index: 10;
+  transition: color 0.2s;
+}
+.competency-modal-close:hover { color: #222; }
+.competency-modal-title {
+  color: #4e369e;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+.competency-modal-skills {
+  color: #222;
+  font-size: 0.98rem;
+  padding-left: 1.1rem;
+  margin: 0;
+  text-align: left;
+}
+.competency-modal-skills li {
+  margin-bottom: 0.3rem;
+  line-height: 1.6;
+}
+/* Experience Badge Styles (moved from inline style) */
+.experience-badge {
+  background: #fff;
+  border: 2px solid #0d6efd;
+  color: #0d6efd;
+  font-weight: 600;
+  font-size: 1.1rem;
+  border-radius: 30px;
+  padding: 0.5rem 1.5rem;
+  box-shadow: 0 2px 8px rgba(13,110,253,0.08);
+  letter-spacing: 0.5px;
+  display: inline-block;
+}
+@media (max-width: 991px) {
+  .circle-card.competency-card { width: 80px; height: 80px; }
+  .competency-label { font-size: 0.7rem; }
+  .competency-icon { font-size: 1.1rem; }
+  .competency-modal-content { padding: 1.2rem 0.7rem 1.2rem 0.7rem; }
+}
